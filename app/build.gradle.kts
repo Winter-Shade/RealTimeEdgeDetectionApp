@@ -22,6 +22,7 @@ android {
                 "-DANDROID_STL=c++_shared"
 
                 targets += "appcpp"
+                cppFlags += ""
 
             }
         }
@@ -39,6 +40,12 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    externalNativeBuild {
+        cmake {
+            path = file("../../cpp/CMakeLisys.txt")
+            version = "3.22.1"
+        }
     }
 }
 
