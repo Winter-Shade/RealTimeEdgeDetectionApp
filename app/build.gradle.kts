@@ -14,6 +14,17 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        externalNativeBuild {
+            cmake {
+                arguments += "-DOpenCV_DIR=/OpenCV/native/jni"
+                "-DANDROID_TOOLCHAIN=clang"
+                "-DANDROID_STL=c++_shared"
+
+                targets += "appcpp"
+
+            }
+        }
     }
 
     buildTypes {
@@ -37,6 +48,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(project(":OpenCV"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
